@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <title>Connect 4 by los panas</title>
+    <style>
+        body {
+        background-image: url('img/fondoweb.avif');
+        background-size: cover;
+
+        }
+        td {
+            background-color: #040404;
+            border: 0px !important;
+            padding: 5px !important;
+            justify-content: center;
+        }
+        .btn-warning {
+         background-color: rgb(2, 1, 1);
+         color :rgb(206, 249, 249) ;
+         font-size: 50 px;
+         border :rgb(3, 2, 3);
+         border-radius: 10%
+        }
+        .btn-warning:hover {
+         background-color: #008CBA;
+        color: white;
+        }
+        .btn-primary{
+         background-color: rgb(255, 0, 217);
+         color :aqua ;
+         font-size: 18 px;
+         border :rgb(3, 2, 3);
+         border-radius: 10%;
+        }
+        .img-player{
+            max-width: 120px;
+            justify-content: center;
+        }
+        .btn1:hover {
+         background-color: #008CBA;
+        color: white;
+ }
+      .alert-info strong {
+        font-size: 24px;
+      }
+       h1{
+        color :#000000;
+        border:rgb(3, 2, 3);
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        text-decoration: underline;
+
+    
+      }
+    </style>
+</head>
+
+<body>
+    <div class="container text-center" id="app">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <center><img src="img/titulofachero.png" alt="titulo"></center>
+
+                <div class="alert alert-info">
+                    <center><strong>Turno: </strong> <strong>{{currentPlayer === PLAYER_1 ? 'Jugador 1' : 'Jugador 2'}}</strong></center>
+                    <br>
+                    <center><img :src="cellImage(currentPlayer)" alt="" class="img-fluid" style="max-width: 70px;"></center>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive col-12 mx-auto">
+            <center><table class="table table-bordered"></center>
+                <thead>
+                    <tr>
+                        <th v-for="i in COLUMNS">
+                            <center><button :disabled="!canPlay" @click="makeMove(i)" class="btn btn-warning">Inserte ficha aquí&nbsp;<i class="fa fa-arrow-down"></i></button></center>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="row in board">
+                        <td v-for="cell in row">
+                            <img class="img-fluid img-player" :src="cellImage(cell)" alt="">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="connect4.js"></script>
+    <center><button onclick="Soporte()" class="btn btn-primary">Soporte</button></center>
+    <script>
+    function Soporte() {
+      Swal.fire({
+        icon: 'info',
+        title: 'Ayuda y Soporte',
+        text: 'para soporte el que tengo entre las piernas peeeeerrrro',
+        confirmButtonColor: '#007bff'
+
+      });
+    }
+    </script>
+
+</body>
+
+</html>
