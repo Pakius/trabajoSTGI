@@ -4,8 +4,47 @@
     box-sizing: border-box;
   }
   
+  .cabecera h1  p{
+    font-size: 15px;
+    margin-bottom: 10px;
+    display: inline;
+  }
+  
+  .boton {
+    text-decoration:none;
+    font-weight:600;
+    font-size:20px;
+    color:#ffffff;
+    padding-top:20px;
+    padding-bottom:20px;
+    padding-left:40px;
+    padding-right:40px;
+    background-color:#005BBB;
+  }
+  
+  #barrainicial{
+    height: 300px;
+    background: #B5B2B2;
+    text-align: center;
+    background-image: url('../../imagenes/logo2.jpg');
+    background-size:cover;
+  }
+   
+  #barrainicial li a {
+    background: #1f53c5;
+    border: none;
+    padding: 12px;
+    color: white;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  #barrainicial li a:hover{
+     background-color: #333333;
+     color: #ffffff;
+  }
+
   body {
-    background-image: url('imagenes/fondoweb.asiv');
+    background-image: url('../../imagenes/fondoweb.avif');
   }
   
   .form-register {
