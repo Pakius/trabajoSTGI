@@ -1,0 +1,96 @@
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+import java.util.*;
+
+public class JuegoCuatroEnRayaServlet extends HttpServlet {
+
+  private Map<String, JuegoCuatroEnRaya> partidas; // Mapa que asocia identificadores de partidas con objetos de juego
+
+  public void init() {
+    partidas = new HashMap<String, JuegoCuatroEnRaya>();
+  }
+
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    PrintWriter out = response.getWriter();
+
+    // Se obtiene el identificador de la partida
+    String idPartida = request.getParameter("idPartida");
+    if (idPartida == null) {
+      out.println("Error: identificador de partida no especificado.");
+      return;
+    }
+
+    // Se obtiene la partida correspondiente al identificador
+    JuegoCuatroEnRaya juego = partidas.get(idPartida);
+    if (juego == null) {
+      // Si la partida no existe, se crea una nueva y se agrega al mapa de partidas
+      juego = new JuegoCuatroEnRaya();
+      partidas.put(idPartida, juego);
+    }
+
+    // Se obtienen los parámetros de la URL correspondientes a la jugada
+    String filaStr = request.getParameter("fila");
+    String columnaStr = request.getParameter("columna");
+    String jugador = request.getParameter("jugador");
+
+    // Se verifica que los parámetros son válidos
+    if (filaStr == null || columnaStr == null || jugador == null) {
+      out.println("Error: parámetros inválidos.");
+      return;
+    }
+    int fila = Integer.parseInt(filaStr);
+    int columna = Integer.parseInt(columnaStr);
+    if (fila < 0 || fila >= JuegoCuatroEnRaya.FILAS || columna < 0 || columna >= JuegoCuatroEnRaya.COLUMNAS) {
+      out.println("Error: jugada fuera de rango.");
+      return;
+    }
+
+    // Se verifica que sea el turno del jugador que está haciendo la jugada
+    String jugadorActual = juego.obtenerJugadorActual();
+    if (!jugadorActual.equals(jugador)) {
+      out.println("Error: no es el turno del jugador actual.");
+      return;
+    }
+
+    // Se realiza la jugada y se actualiza el estado del juego
+    boolean resultado = juego.jugar(fila, columna);
+
+    // Se verifica si la jugada es válida
+    if (!resultado) {
+      out.println("Error: jugada inválida.");
+      return;
+    }
+
+    // Se verifica si hay un ganador o si se empata
+    String ganador = juego.obtenerGanador();
+    if (ganador != null) {
+      out.println("Ha ganado " + ganador + "!");
+      partidas.remove(idPartida); // Si hay un ganador, se elimina la partida del mapa de partidas
+      return;
+    }
+    if (juego.hayEmpate()) {
+      out.println("Empate!");
+      partidas.remove(idPartida); // Si hay un empate, se elimina la partida del mapa de partidas
+      return;
+      }
+      // Si no hay ganador ni empate, se muestra el estado actual del juego
+out.println("Turno de " + juego.obtenerJugadorActual() + "<br>");
+out.println(juego.toString());
+}
+}
+
+
+/*
+En este ejemplo, hemos utilizado un `Map` para asociar cada identificador de partida con un objeto `JuegoCuatroEnRaya`.
+En el método `doGet()`, primero se verifica si la partida correspondiente al identificador ya existe en el mapa. 
+Si no existe, se crea una nueva partida y se agrega al mapa.
+
+Luego, se obtienen los parámetros de la URL correspondientes a la jugada, y se realiza la jugada en el objeto `JuegoCuatroEnRaya`
+correspondiente. Se verifica si la jugada es válida y si hay un ganador o empate. Si hay un ganador o empate, se elimina
+la partida del mapa de partidas correspondiente.
+
+Este código permitiría manejar múltiples partidas de 4 en raya de manera concurrente. Para unirse a una partida existente,
+los jugadores solo tendrían que especificar el identificador de la partida en la URL correspondiente al servlet.
+*/
+
