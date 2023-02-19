@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app>
+    <display-name>Conecta4</display-name> <description>Practica Servlets Laboratorio STGI</description>
+        <servlet>
+            <servlet-name>inicio</servlet-name>
+            <description> Servlet inicio juego </description>
+            <servlet-class>inicio</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>inicio</servlet-name>
+            <url-pattern>/inicio</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>registro</servlet-name>
+            <description> Servlet inicio juego </description>
+            <servlet-class>registro</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>registro</servlet-name>
+            <url-pattern>/registro</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>crearUsuario</servlet-name>
+            <description> Servlet inicio juego </description>
+            <servlet-class>crearUsuario</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>crearUsuario</servlet-name>
+            <url-pattern>/crearUsuario</url-pattern>
+        </servlet-mapping>
+
+        <session-config>
+            <session-timeout>30</session-timeout>
+        </session-config>
+
+	<servlet>
+            <servlet-name>partidasJugadas</servlet-name>
+            <description> Servlet inicio juego </description>
+            <servlet-class>partidasJugadas</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>partidasJugadas</servlet-name>
+            <url-pattern>/partidasJugadas</url-pattern>
+        </servlet-mapping>
+	
+	<servlet>
+            <servlet-name>empezarPartida</servlet-name>
+            <description> Servlet inicio juego </description>
+            <servlet-class>empezarPartida</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>empezarPartida</servlet-name>
+            <url-pattern>/empezarPartida</url-pattern>
+        </servlet-mapping>	
+
+	<servlet>
+            <servlet-name>crearPartida</servlet-name>
+            <description> Servlet inicio juego </description>
+            <servlet-class>crearPartida</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>crearPartida</servlet-name>
+            <url-pattern>/crearPartida</url-pattern>
+        </servlet-mapping>
+
+        	<servlet>
+            <servlet-name>partida</servlet-name>
+            <description> Servlet inicio juego </description>
+            <servlet-class>partida</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>partida</servlet-name>
+            <url-pattern>/partida</url-pattern>
+        </servlet-mapping>
+</web-app>

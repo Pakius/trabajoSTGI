@@ -1,0 +1,18 @@
+h3{
+    font-size: 4em;
+    text-align: center;
+    margin:0;
+    padding: 0;
+    text-transform: uppercase;
+    font: 'arial';
+    position:absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%) ;
+    
+
+}
+
+body{
+    background-color: rgb(214, 165, 75);
+}
