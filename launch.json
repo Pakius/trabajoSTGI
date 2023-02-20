@@ -5,10 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "chrome",
+            "type": "java",
+            "name": "Launch Current File",
             "request": "launch",
-            "name": "Open index.html",
-            "file": "C:\\Users\\Pablo\\Documents\\Proyecto STGI\\trabajoSTGI\\index.html"
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "conecta4_aab28e42"
         }
     ]
 }
